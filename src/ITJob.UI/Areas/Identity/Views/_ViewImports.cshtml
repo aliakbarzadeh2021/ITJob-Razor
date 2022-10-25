@@ -1,0 +1,24 @@
+﻿@using ITJob.UI.Areas.Identity
+@using ITJob.Common.IdentityToolkit
+@using ITJob.Common.PersianToolkit
+@using ITJob.DomainModels.Identity
+@using ITJob.Services.Contracts.Identity
+@using ITJob.Services.Identity
+@using ITJob.ViewModels.Identity
+@using ITJob.ViewModels.Identity.Emails
+@using ITJob.ViewModels.Identity.Settings
+@using Microsoft.AspNetCore.Routing
+@using Microsoft.Extensions.Options
+@using System.Globalization
+@using System.Threading.Tasks
+@using System.Net
+@using DNTPersianUtils.Core
+@using ITJob.Repository.Context
+@using ITJob.DomainModels.AuditableEntity
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, DNTCaptcha.Core
+@addTagHelper *, DNTBreadCrumb.Core
+@addTagHelper *, cloudscribe.Web.Pagination
+@addTagHelper *, ITJob.UI

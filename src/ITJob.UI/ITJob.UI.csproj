@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>ITJob.UI</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>ITJob.UI</PackageId>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>ITJob.UI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="wwwroot\**\*;Views\**\*;Areas\**\*.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITJob.Common\ITJob.Common.csproj" />
+    <ProjectReference Include="..\ITJob.DomainModels\ITJob.DomainModels.csproj" />
+    <ProjectReference Include="..\ITJob.IocConfig\ITJob.IocConfig.csproj" />
+    <ProjectReference Include="..\ITJob.Repository\ITJob.Repository.csproj" />
+    <ProjectReference Include="..\ITJob.Services\ITJob.Services.csproj" />
+    <ProjectReference Include="..\ITJob.ViewModels\ITJob.ViewModels.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DNTBreadCrumb.Core" Version="1.2.2" />
+    <PackageReference Include="DNTCaptcha.Core" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PlatformTarget>anycpu</PlatformTarget>
+  </PropertyGroup>
+  <Target Name="PrecompileScript" BeforeTargets="BeforeBuild">
+    <Exec Command="dotnet bundle" />
+  </Target>
+  <ItemGroup>
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.4.337" />
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- extends watching group to include *.js files -->
+    <Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*;wwwroot\**\*;src\**\*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Advertisement\Controllers\" />
+    <Folder Include="Areas\Advertisement\Views\" />
+  </ItemGroup>
+</Project>
